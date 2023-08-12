@@ -1,13 +1,18 @@
 import React from 'react';
 import Mockup from './mockup/Mockup';
+import { useEffect } from 'react';
 import { Counter } from './features/counter/Counter';
 import Form from './components/Form'
 import './App.css';
 import FilterButtonList from './components/FilterButtonList';
 import TaskCounter from './components/TaskCounter';
 import TaskContainer from './components/TaskContainer';
+import tasks from './data/tasks'
 
 function App() {
+
+
+
   return (
     <div className="App">
         {/* <Counter /> */}
