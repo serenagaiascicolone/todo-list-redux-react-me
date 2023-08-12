@@ -161,6 +161,7 @@ button:hover {
   flex-direction: column;
   height: 150px;
   position: relative;
+  overflow-y: auto;
 }
 
 .task-container input {
@@ -175,7 +176,7 @@ button:hover {
   font-weight: 400;
   line-height: 1.5rem;
   height: 60%;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 .buttons-container {
@@ -184,6 +185,13 @@ button:hover {
   gap: 0.5rem;
   justify-content: center;
 }
+
+/*classi intercettate da redux*/
+.completed {
+  text-decoration: line-through;
+
+}
+
 
 
 

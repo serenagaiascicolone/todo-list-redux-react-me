@@ -2,15 +2,13 @@ import { useState } from "react"
 import { UseSelector, useDispatch }  from 'react-redux';
 import { addNewTask } from "../features/todo/taskSlice";
 import FilterButtonList from "./FilterButtonList"
-import tasks from '../data/tasks'
+
 
 function Form () {
     
 const [newTask, setNewTask] = useState('')   
 const dispatch = useDispatch();
-console.log(newTask)
 
-console.log(newTask)
     return (
         <>
      <section className="add-and-filter-tasks">

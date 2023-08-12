@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import tasks from '../../data/tasks'
+
+import { nanoid } from 'nanoid';
+
+
 
 const initialState = {
-    // value: JSON.parse(localStorage.getItem('tasks')) || [],
-    value: [],
+    value: JSON.parse(localStorage.getItem('tasks')) || [],
     status: 'nothing',
   }
 console.log(initialState.value)
@@ -16,18 +18,39 @@ export const taskSlice = createSlice ({
       state.value = [
           ...state.value, 
           {
-            id: 4,
+            id: nanoid(),
             name: action.payload,
             completed: false,
           }
       ]
+    },
+    deleteTask: (state, action) => {
+      state.status = 'delete';
+      state.value = 
+        state.value.filter(task => task.id !== action.payload);
+      
+    },
+    toggleTask: (state, action) => {
+      state.status = 'toggle task';
+      state.value = 
+      state.value.map(task => {
+        if(task.id === action.payload){
+          return {
+            ...task,
+            completed: !task.completed
+          }
+        }
+        return task;
+      });
     }
+        
+
   }
 
   
 })
 
-export const {addNewTask} = taskSlice.actions 
+export const {addNewTask, deleteTask, toggleTask} = taskSlice.actions 
 
 export const selectTask = (state) => state.task.value;
 

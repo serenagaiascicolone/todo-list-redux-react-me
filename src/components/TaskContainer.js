@@ -5,6 +5,7 @@ import { selectTask } from '../features/todo/taskSlice';
 
 function TaskContainer () {
 const tasks = useSelector(selectTask)
+console.log(tasks)
     return (
         <section className="tasks-container">
             {tasks.map(task => (

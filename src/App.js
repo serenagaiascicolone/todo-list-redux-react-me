@@ -7,11 +7,16 @@ import './App.css';
 import FilterButtonList from './components/FilterButtonList';
 import TaskCounter from './components/TaskCounter';
 import TaskContainer from './components/TaskContainer';
-import tasks from './data/tasks'
+import { useSelector } from 'react-redux';
+import { selectTask } from './features/todo/taskSlice';
 
+import { nanoid } from 'nanoid';
 function App() {
+  const tasks = useSelector(selectTask)
 
-
+  useEffect (() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}, [tasks])
 
   return (
     <div className="App">
