@@ -1,0 +1,40 @@
+@media (min-width: 768px) {
+    
+    .todo-list-header {
+        justify-content: center;
+    }
+
+    .todo-list-header h1 { 
+        font-size: 4rem;
+      }
+    
+    
+    .add-and-filter-tasks {
+        justify-content: space-around;
+        flex-direction: row;
+       
+    }
+
+        .tasks-container {
+        justify-content: start;
+    
+        }
+
+
+        .task-container {
+        width: calc((100% - 2rem)/4);
+        }
+}
+
+@media (min-width: 768px) {
+    
+    .tasks-container {
+        justify-content: center;
+    
+        }
+
+
+    .task-container {
+        width: calc((100% - 2rem)/6);
+        }
+}

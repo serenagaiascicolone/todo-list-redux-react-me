@@ -14,12 +14,18 @@ dispatch(addNewTask(newTask))
 setNewTask('')
 }
 
+function handleKeyUp (e) {
+    if(e.key === 'Enter'){
+        handleAdd()
+    }
+}
+
 
     return (
         <>
      <section className="add-and-filter-tasks">
      <div className="add-task">
-     <input type="text" value={newTask} onChange ={(e) => setNewTask(e.target.value)}/>
+     <input type="text" value={newTask} onChange ={(e) => setNewTask(e.target.value)} onKeyUp={handleKeyUp}/>
      <button onClick={handleAdd}>Aggiungi</button>
      </div>
      <FilterButtonList />

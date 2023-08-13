@@ -61,14 +61,11 @@ h1, h2, h3, h4, h5, h6, p {
   gap: 1rem;
 }
 
-.todo-list-header svg {
-  padding: 1rem;
-}
 
 .todo-list-header h1 {
   padding-left: 2rem;
   font-family: var(--title-font);
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
 }
 
@@ -181,10 +178,6 @@ button:hover  {
   padding: 1rem 1rem;
   justify-content: center;
   background-color: var(--primary-color);
-  /* background-image: url(./img/tagliata.jpg);
-  background-position: center ;
-  background-size: cover; */
-  /* height: 100vh; */
 }
 
 .task-container {
