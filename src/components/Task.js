@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { deleteTask, toggleTask } from "../features/todo/taskSlice";
+
 function Task ({task}) {
 const dispatch = useDispatch();
     return (

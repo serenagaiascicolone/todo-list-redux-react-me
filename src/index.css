@@ -44,12 +44,14 @@ h1, h2, h3, h4, h5, h6, p {
   width: 100%;
   background-image: 
   linear-gradient(
-    rgb(191, 140, 111, 0.2),
-    rgb(191, 140, 111, 0.2)
+    rgb(191, 140, 111, 0.5),
+    rgb(191, 140, 111, 0.5)
   ),
   url(./img/pexels-cottonbro-studio-5190680.jpg);
   background-size: cover;
-  height: 115px;
+  background-attachment: ;
+  height: 150px;
+  display: flex;
 }
 
 .todo-list-header h1 {
@@ -72,6 +74,7 @@ main {
   text-align: center;
   padding: 2rem;
   text-transform: uppercase;
+  background-color: var(--last-color);
 }
 
 .add-and-filter-tasks {
@@ -145,12 +148,11 @@ button:hover {
   gap: 1rem;
   padding: 1rem 1rem;
   justify-content: center;
-  background-image: url(./img/tagliata.jpg);
+  background-color: var(--primary-color);
+  /* background-image: url(./img/tagliata.jpg);
   background-position: center ;
-  background-size: cover;
-  height: 100vh;
-
-  
+  background-size: cover; */
+  /* height: 100vh; */
 }
 
 .task-container {
@@ -162,6 +164,10 @@ button:hover {
   height: 150px;
   position: relative;
   overflow-y: auto;
+}
+
+.task-container:nth-child(3n+1), .task-container:nth-child(4n+1){
+  background-color: red;
 }
 
 .task-container input {

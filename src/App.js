@@ -9,8 +9,8 @@ import TaskCounter from './components/TaskCounter';
 import TaskContainer from './components/TaskContainer';
 import { useSelector } from 'react-redux';
 import { selectTask } from './features/todo/taskSlice';
-
 import { nanoid } from 'nanoid';
+
 function App() {
   const tasks = useSelector(selectTask)
 
