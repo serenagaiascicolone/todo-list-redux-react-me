@@ -33,8 +33,6 @@ function App() {
         <h3> I miei task</h3>
         </header>
           <Form />
-   
-          <TaskCounter />
           <TaskContainer />
           </main>
     </div>
