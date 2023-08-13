@@ -7,12 +7,13 @@ import {filters} from '../features/todo/taskSlice';
 function TaskContainer () {
 const tasks = useSelector(selectTask)
 const filter = useSelector(selectFilter)
-const taskList = filters[filter]
+const selectedFilter = filters[filter]
+const taskList = tasks.filter(selectedFilter)
 
     
 return (
         <section className="tasks-container">
-            {tasks.map(task => (
+            {taskList.map(task => (
                 <Task 
                 key = {task.id}
                 task = {task}
