@@ -1,7 +1,7 @@
 import React from 'react';
 import Mockup from './mockup/Mockup';
 import { useEffect } from 'react';
-import { Counter } from './features/counter/Counter';
+
 import Form from './components/Form'
 import './App.css';
 import FilterButtonList from './components/FilterButtonList';
@@ -10,7 +10,7 @@ import TaskContainer from './components/TaskContainer';
 import { useSelector } from 'react-redux';
 import { selectTask } from './features/todo/taskSlice';
 import { nanoid } from 'nanoid';
-import { SiAngellist } from "react-icons/si";
+import { FaListCheck} from "react-icons/fa6";
 
 
 function App() {
@@ -22,11 +22,11 @@ function App() {
 
   return (
     <div className="App">
-        {/* <Counter /> */}
            {/* <Mockup /> */}
           
            <header className="todo-list-header">
-            <h1> <SiAngellist/> Todo List </h1>
+            <h1>  Todo List </h1>
+           {/* <FaListCheck  style={{fontSize : "2rem"}}/> */}
         </header>
         <main>
         <header className="tasks-title">

@@ -15,7 +15,11 @@ if(taskNumber > 0){
         )
 } else {
     return (
-        <h3> Nessun task in questa lista </h3>
+        <div className="empty-list"> 
+            
+            <h3> Nessun task in questa lista </h3>
+
+        </div>
     )
 }
 }
