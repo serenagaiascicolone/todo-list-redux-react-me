@@ -10,6 +10,7 @@ import TaskContainer from './components/TaskContainer';
 import { useSelector } from 'react-redux';
 import { selectTask } from './features/todo/taskSlice';
 import { nanoid } from 'nanoid';
+import { SiAngellist } from "react-icons/si";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
            {/* <Mockup /> */}
           
            <header className="todo-list-header">
-            <h1>Todo List </h1>
+            <h1> <SiAngellist/> Todo List </h1>
         </header>
         <main>
         <header className="tasks-title">

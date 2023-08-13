@@ -1,12 +1,16 @@
 import Task from './Task'
 // import tasks from '../data/tasks'
 import { useSelector } from 'react-redux';
-import { selectTask } from '../features/todo/taskSlice';
+import { selectTask, selectFilter } from '../features/todo/taskSlice';
+import {filters} from '../features/todo/taskSlice';
 
 function TaskContainer () {
 const tasks = useSelector(selectTask)
+const filter = useSelector(selectFilter)
+const taskList = filters[filter]
 
-    return (
+    
+return (
         <section className="tasks-container">
             {tasks.map(task => (
                 <Task 

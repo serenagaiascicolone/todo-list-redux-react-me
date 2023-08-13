@@ -6,9 +6,17 @@ import { nanoid } from 'nanoid';
 
 const initialState = {
     value: JSON.parse(localStorage.getItem('tasks')) || [],
-    status: 'nothing',
+    status: 'init',
+    filter: 'Tutti'  
   }
-console.log(initialState.value)
+  
+export const filters = {
+    Tutti: () => true,
+    Rimasti: task => !task.completed,
+    Completati: task => task.completed,
+  }
+  console.log(filters[initialState.filter])
+
 export const taskSlice = createSlice ({
   name: 'task',
   initialState,
@@ -42,16 +50,34 @@ export const taskSlice = createSlice ({
         }
         return task;
       });
-    }
-        
+    },
+    editingTask: (state, action) => {
+
+      state.status = 'editing task';
+      state.value =
+      state.value.map(task => {
+        if (task.id === action.payload[0]){
+          return {
+            ...task,
+            name: action.payload[1]
+          }
+        }
+        return task 
+      })
+    },
+     filterTask: (state, action) => {
+      state.status = 'filter task';
+      state.filter = action.payload
+      console.log(state.filter)
+     }    
 
   }
 
   
 })
 
-export const {addNewTask, deleteTask, toggleTask} = taskSlice.actions 
+export const {addNewTask, deleteTask, toggleTask, editingTask, filterTask} = taskSlice.actions 
 
 export const selectTask = (state) => state.task.value;
-
+export const selectFilter = (state) => state.task.filter;
 export default taskSlice.reducer 
