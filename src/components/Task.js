@@ -21,7 +21,7 @@ function handleNewTaskName (e){
 // salva
 function handleSubmit(e){
     e.preventDefault();
-    dispatch(editingTask([task.id, newTaskName]))
+    dispatch(editingTask({id: task.id, name:newTaskName}))
     setNewTaskName('');
     setIsEditing(false)
 }

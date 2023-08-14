@@ -29,15 +29,7 @@ export const taskSlice = createSlice ({
         name: action.payload,
         completed: false,
       }
-      // state.tasks = [
-      //     ...state.tasks, 
-      //     {
-      //       id: nanoid(),
-      //       name: action.payload,
-      //       completed: false,
-      //     }
-      // ]
-      state.tasks.push(newTask)
+      state.tasks.push(newTask) // possiamo fare push grazie a immer, libreria che crea una bozza di stato e la integra a quello già esistente 
     },
     deleteTask: (state, action) => {
       state.status = 'delete';
@@ -47,30 +39,24 @@ export const taskSlice = createSlice ({
     },
     toggleTask: (state, action) => {
       state.status = 'toggle task';
-      state.tasks = 
-      state.tasks.map(task => {
-        if(task.id === action.payload){
-          return {
-            ...task,
-            completed: !task.completed
-          }
-        }
-        return task;
-      });
+      // state.tasks = 
+      const task = state.tasks.find(task => task.id === action.payload)
+      task.completed = !task.completed 
+      // state.tasks.map(task => {
+      //   if(task.id === action.payload){
+      //     return {
+      //       ...task,
+      //       completed: !task.completed
+      //     }
+      //   }
+      //   return task;
+      // });
     },
     editingTask: (state, action) => {
 
       state.status = 'editing task';
-      state.tasks =
-      state.tasks.map(task => {
-        if (task.id === action.payload[0]){
-          return {
-            ...task,
-            name: action.payload[1]
-          }
-        }
-        return task 
-      })
+      const task = state.tasks.find(task => task.id === action.payload.id);
+      task.name = action.payload.name
     },
      filterTask: (state, action) => {
       state.status = 'filter task';
@@ -86,6 +72,6 @@ export const {addNewTask, deleteTask, toggleTask, editingTask, filterTask} = tas
 
 export const selectTask = (state) => state.task.tasks;
 export const selectFilter = (state) => state.task.filter;
-export const selectedFilter = (state) => filters[state.task.filter] // filtro che seleziona i filtri in base alla relativa funzione che si trova dentro l'oggetto filters 
+export const selectedFilter = (state) => filters[state.task.filter] // selettore che prendo lo stato e restituisce la sua proprietà filter come parametro dell'oggetto filters che dentro ha delle funzioni: se la proprietà filter è uguale a tutti si attiverà la funzione tutti, e così via...
 
 export default taskSlice.reducer 
