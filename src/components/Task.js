@@ -37,14 +37,20 @@ useEffect(() => {
     }
   }, [isEditing])
 
+
+// JSX NO MODIFICA
 let taskView = (
  
        <>
+            {/* FLAG */}
             <span onClick={()=> dispatch(toggleTask(task.id))}><CiCircleCheck className={`task-button toggle ${task.completed ? 'checked' : ''}`} style= {{borderRadius : "50%"}}/></span>
-        {/* <input type="checkbox" checked={task.completed}  onChange={()=> dispatch(toggleTask(task.id))}/> */}
+            
+            {/* CLOSE BOTTON: CANCELLA */}
             <span onClick = {()=>dispatch(deleteTask(task.id))}> <AiFillCloseCircle className="task-button"  style= {{borderRadius : "50%"}} /> </span>
         <p className={task.completed ? 'completed' : ''}> {task.name}</p>
         <div className="buttons-container">
+
+            {/* MODIFICA */}
             <button onClick={()=> setIsEditing(true)}>Modifica</button>
         </div>
        </>
@@ -52,6 +58,7 @@ let taskView = (
     
     )
 
+// JSX MODIFCA
 let taskEdit = (
     <form action="#" onSubmit={handleSubmit}>
         <span onClick={()=> dispatch(toggleTask(task.id))}><CiCircleCheck className={`task-button toggle ${task.completed ? 'checked' : ''}`} style= {{borderRadius : "50%"}}/></span>
@@ -59,9 +66,10 @@ let taskEdit = (
         <span onClick = {handleEditing}> <IoChevronBackCircleOutline className="task-button"  style= {{borderRadius : "50%"}} /> </span>
     {/* <p className={task.completed ? 'completed' : ''}> {task.name}</p> */}
 
-        <textarea name="" id="" cols="30" rows="10" placeholder={task.name}
+        <textarea name="" id="" cols="30" rows="10" 
         ref = {editInputRef}
         value={newTaskName}
+        // value={task.name}
         onChange= {handleNewTaskName}  
         >{task.name}</textarea>
 
@@ -71,7 +79,7 @@ let taskEdit = (
     </form>
     )
 
-
+// LOGICA CONDIZIONALE
     return (
         <article className="task-container">
             {isEditing ? taskEdit : taskView}

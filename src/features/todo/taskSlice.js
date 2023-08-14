@@ -68,7 +68,6 @@ export const taskSlice = createSlice ({
      filterTask: (state, action) => {
       state.status = 'filter task';
       state.filter = action.payload
-      console.log(state.filter)
      }    
 
   }
@@ -80,4 +79,6 @@ export const {addNewTask, deleteTask, toggleTask, editingTask, filterTask} = tas
 
 export const selectTask = (state) => state.task.value;
 export const selectFilter = (state) => state.task.filter;
+export const selectedFilter = (state) => filters[state.task.filter] // filtro che seleziona i filtri in base alla relativa funzione che si trova dentro l'oggetto filters 
+
 export default taskSlice.reducer 
