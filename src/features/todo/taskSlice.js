@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { nanoid } from 'nanoid';
 
 
 
 const initialState = {
-    value: JSON.parse(localStorage.getItem('tasks')) || [],
+    tasks: JSON.parse(localStorage.getItem('tasks')) || [],
     status: 'init',
-    filter: 'Tutti'  
+    filter: 'Tutti' 
+    // isEditing: false, 
   }
   
 export const filters = {
@@ -23,25 +23,32 @@ export const taskSlice = createSlice ({
   reducers: {
     addNewTask: (state, action) => {
       state.status = 'added';
-      state.value = [
-          ...state.value, 
-          {
-            id: nanoid(),
-            name: action.payload,
-            completed: false,
-          }
-      ]
+      const newTask = 
+      {
+        id: nanoid(),
+        name: action.payload,
+        completed: false,
+      }
+      // state.tasks = [
+      //     ...state.tasks, 
+      //     {
+      //       id: nanoid(),
+      //       name: action.payload,
+      //       completed: false,
+      //     }
+      // ]
+      state.tasks.push(newTask)
     },
     deleteTask: (state, action) => {
       state.status = 'delete';
-      state.value = 
-        state.value.filter(task => task.id !== action.payload);
+      state.tasks = 
+        state.tasks.filter(task => task.id !== action.payload);
       
     },
     toggleTask: (state, action) => {
       state.status = 'toggle task';
-      state.value = 
-      state.value.map(task => {
+      state.tasks = 
+      state.tasks.map(task => {
         if(task.id === action.payload){
           return {
             ...task,
@@ -54,8 +61,8 @@ export const taskSlice = createSlice ({
     editingTask: (state, action) => {
 
       state.status = 'editing task';
-      state.value =
-      state.value.map(task => {
+      state.tasks =
+      state.tasks.map(task => {
         if (task.id === action.payload[0]){
           return {
             ...task,
@@ -77,7 +84,7 @@ export const taskSlice = createSlice ({
 
 export const {addNewTask, deleteTask, toggleTask, editingTask, filterTask} = taskSlice.actions 
 
-export const selectTask = (state) => state.task.value;
+export const selectTask = (state) => state.task.tasks;
 export const selectFilter = (state) => state.task.filter;
 export const selectedFilter = (state) => filters[state.task.filter] // filtro che seleziona i filtri in base alla relativa funzione che si trova dentro l'oggetto filters 
 

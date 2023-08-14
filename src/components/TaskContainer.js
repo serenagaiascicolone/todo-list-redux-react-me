@@ -2,7 +2,6 @@ import Task from './Task'
 // import tasks from '../data/tasks'
 import { useSelector } from 'react-redux';
 import { selectTask, selectedFilter } from '../features/todo/taskSlice';
-
 import TaskCounter from './TaskCounter';
 
 
