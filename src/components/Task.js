@@ -11,7 +11,7 @@ function Task ({task}) {
 const dispatch = useDispatch();
 
 const [isEditing, setIsEditing] = useState(false)
-const [newTaskName, setNewTaskName] = useState('')
+const [newTaskName, setNewTaskName] = useState(task.name)
 const editInputRef = useRef(null)
 
 function handleNewTaskName (e){
@@ -22,13 +22,13 @@ function handleNewTaskName (e){
 function handleSubmit(e){
     e.preventDefault();
     dispatch(editingTask({id: task.id, name:newTaskName}))
-    setNewTaskName('');
+    // setNewTaskName('');
     setIsEditing(false)
 }
 
 // modifica
 function handleEditing () {
-    setNewTaskName('')
+    // setNewTaskName('')
     setIsEditing(false)
 }
 
@@ -71,8 +71,9 @@ let taskEdit = (
         ref = {editInputRef}
         value={newTaskName}
         // value={task.name}
-        onChange= {handleNewTaskName}  
-        >{task.name}</textarea>
+        onChange= {handleNewTaskName}
+        // defaultValue={task.name}  
+        ></textarea>
 
         <div className="buttons-container">
             <button type='submit'>Salva</button>
